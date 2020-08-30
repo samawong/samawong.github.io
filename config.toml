@@ -1,0 +1,79 @@
+baseURL = "http://samawong.github.io"
+languageCode = "en-us"
+title = "Samawong's Notes"
+DefaultContentLanguage = "en"
+
+
+# Pagination
+paginate = 10
+paginatePath = "page"
+
+# Theme to use
+theme = "sama"
+
+summaryLength = 1
+
+# Copyright, appears in the footer
+copyright = "© 2020, All Rights Reserved"
+
+[params]
+headTitle = "Samawong's Notes"
+description = "More notes about kubernetes, docker ,android ,flutter etc."
+
+
+disqusShortname = "samawongblog"
+
+# Links format
+  # Main menu
+
+[[menu.main]]
+  url = "/"
+  name = "Home"
+  weight = 1
+
+[[menu.main]]
+  url = "/about/"
+  name = "关于"
+  weight = 4
+
+[[menu.main]]
+url = "/archives/"
+name = "归档"
+weight = 2
+
+[[menu.main]]
+url = "/tags"
+name = "标签"
+weight = 3
+
+
+# Markdown renderer
+[markup]
+    defaultMarkdownHandler = "goldmark"
+    [markup.goldmark]
+        [markup.goldmark.extensions]
+            definitionList = true
+            footnote = true
+            linkify = true
+            strikethrough = true
+            table = true
+            taskList = true
+            typographer = true
+        [markup.goldmark.parser]
+            attribute = true
+            autoHeadingID = true
+            autoHeadingIDType = "github"
+        [markup.goldmark.renderer]
+            hardWraps = false
+            unsafe = true
+            xHTML = false
+    [markup.highlight]
+        codeFences = true
+        guessSyntax = false
+        lineNos = true
+        lineNumbersInTable = true
+        noClasses = false
+    [markup.tableOfContents]
+        startLevel = 2
+        endLevel = 6
+        ordered = true
