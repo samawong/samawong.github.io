@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html><header>
+<meta charset="UTF-8">
+
+<link rel="stylesheet" href="/css/material-components-web.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="/css/style.css">
+<script src="js/material-components-web.min.js"></script>
+</header><body><header class="Header js-header">
+     
+    
+    <nav class="Header-nav">
+        <a href="/">Samawong&#39;s Notes</a>
+    
+    <button class="Header-menuButton js-headerMenuButton" aria-label="Main menu" aria-expanded="false">
+        <div class="Header-menuButtonInner">
+    </button>
+    <ul class="Header-menu">
+        
+            <li class="Header-menuItem">
+                <a href="/">Home</a>
+            </li>
+        
+            <li class="Header-menuItem">
+                <a href="/archives/">归档</a>
+            </li>
+        
+            <li class="Header-menuItem">
+                <a href="/tags">标签</a>
+            </li>
+        
+            <li class="Header-menuItem">
+                <a href="/about/">关于</a>
+            </li>
+        
+    </ul>
+</nav>
+</header>
+<hr/>
+<div id="content">
+<main class="Site-content" id="page">
+
+    <div class="container">
+        <a href="/posts/use-adb-command-to-debug-android-device/" class="summary-title-link"><h1>Use Adb Command to Debug Android Device</h1></a>
+
+<h5 class="author">
+    发布于2020-08-30，
+    文章约169字， 
+    阅读约需1分钟。
+    
+
+  
+     [<a href="http://samawong.github.io/tags/android">Android</a>] 
+  
+
+
+
+
+
+
+
+  
+  「<a href="http://samawong.github.io/categories/%E6%97%81%E9%80%9A%E6%9D%82%E7%B2%AE">旁通杂粮</a>」
+  
+
+
+</h5>
+<hr/>
+
+<p><img src="https://res.cloudinary.com/samawong/image/upload/v1598792229/notes/adb_android/0_zscnv5.jpg" alt="demo" title="demo">
+​手中有一台空气净化器的控制平板，屏幕触摸无外接件，所以无触摸功能，接口少，手边也没有OTG线，不然可以外接鼠标或键盘来进行操作，因此，请上Android下的adb命令来进行操作。</p>
+<p>具体步骤如下：</p>
+<ol>
+<li>将设备通过USB线连接电脑；</li>
+<li>在命令窗口输入adb devices查看是否连接设备,如下图所示，会出现一长串字符串，连接多个设备的话会出现多条类似数据；</li>
+</ol>
+<pre><code>sama@w ~ % adb devices
+List of devices attached
+86589cb8c78700000000device
+</code></pre><ol start="3">
+<li>使用adb shell 查看系统内已安装的软件包：</li>
+</ol>
+<pre><code>sama@w ~ % adb shell pm list packages
+package:com.android.soundrecorder
+package:com.android.launcher
+package:com.android.defcontainer
+package:com.android.providers.partnerbookmarks
+package:com.android.contacts
+package:com.android.phone
+package:com.google.android.onetimeinitializer
+package:com.google.android.partnersetup
+package:com.android.calculator2
+package:com.android.proxyhandler
+package:com.android.htmlviewer
+... ...
+</code></pre><ol start="4">
+<li>查看已安装的软件包哪个不属于系统自带的（非android，Google的），将他们删除掉：</li>
+</ol>
+<pre><code>sama@w ~ % adb uninstall com.jinmaigao.shutdown
+</code></pre><ol start="5">
+<li>重启查看系统是否已恢复android原本界面；</li>
+<li>因为没有触摸功能，所以后续的所有操作还得使用adb命令来进行操作；</li>
+<li>连接Wi-Fi：
+主要使用以下几条命令：</li>
+</ol>
+<pre><code>adb shell input keyevent 66 //确定键
+
+adb shell input keyevent 19 //向上
+
+adb shell input keyevent 20 //向下
+
+adb shell input keyevent 21 //向左
+
+adb shell input keyevent 22 //向右
+
+adb shell input text @@@@@@@@ //输入字符串“@@@@@@@@”
+</code></pre><p>以上几个命令足以开启Wi-Fi，且大部分设置操作均可使用这些命令来执行操作；</p>
+<ol start="8">
+<li>安装软件，因打算旧物利用，来制作个桌面时钟，所以下载了“新机表”这个软件；</li>
+</ol>
+<p>新机表：酷安市场搜索下载</p>
+<p>安装命令：</p>
+<p><code>sama@w ~ % adb install path-to-app.apk</code></p>
+<p>安装成功后会有Success字样；</p>
+<ol start="9">
+<li>启动软件：</li>
+</ol>
+<p>这里有两种方式，一一说明：</p>
+<ul>
+<li>
+<p>使用上面的上、下、左、右、确定命令直接打开软件；</p>
+</li>
+<li>
+<p>查看新机表软件包名称，然后查询他的的Activity Resolver Table，然后使用adb命令直接操作该Activity:</p>
+</li>
+</ul>
+<pre><code>sama@w ~ % adb shell pm list packages//查看安装的所有软件包
+
+sama@w ~ % adb shell dumpsys package app.xunxun.homeclock
+Activity Resolver Table:
+  Non-Data Actions:
+      android.intent.action.MAIN:
+        41b96a78 app.xunxun.homeclock/.activity.MainActivity filter 41b92d00
+          Action: &quot;android.intent.action.MAIN&quot;
+          Category: &quot;android.intent.category.LAUNCHER&quot;
+
+
+app.xunxun.homeclock/.activity.MainActivity即我们下一步要操作的字符串
+</code></pre><ul>
+<li>在命令窗口接着输入以下命令：</li>
+</ul>
+<p><code> adb shell am start app.xunxun.homeclock/.activity.MainActivity</code>
+可以在平板的屏幕上看到软件已打开。</p>
+<p>其他的一些adb使用命令：</p>
+<p>1、调整亮度：</p>
+<p><code>adb shell settings put system screen_brightness 150 //更改亮度值（亮度值在0—255之间）</code>
+2、旋转屏幕：</p>
+<p><code>adb shell content insert --uri content://settings/system --bind name:s:user_rotation --bind value:i:1</code></p>
+<p>还有好多命令，本文不再赘述，有兴趣者请参阅文末参考文章链接。</p>
+<p>然后使用旧台历做来个支架，不完美，效果还不错。</p>
+<p>【参考文章】</p>
+<p>1:https://mazhuang.org/awesome-adb/</p>
+<p>2:https://blog.csdn.net/luckywang1103/article/details/76804856</p>
+<p>3:https://blog.csdn.net/xajhsunei/article/details/78049762</p>
+<p>4:https://blog.csdn.net/jimbo_lee/article/details/52168189</p>
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://samawongblog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+</div>
+</main>
+
+        </div><footer>
+    <div class="Footer">
+      <ul class="Footer-links">
+        <li class="Footer-link"><span>© 2020, All Rights Reserved</span></li>
+        <li class="Footer-link"><a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎</a></li>
+        <li class="Footer-link"><a href="http://github.com/samawong">Github</a></li>
+        <li class="Footer-link"><a href="http://t.me/samawong" target="_blank" >Telegram</a></li>
+      </ul>
+      <a class="Footer-supportedBy" href="https://gohugo.io">Supported by HUGO</a>
+    </div>
+  </footer><script id="dsq-count-scr" src="//samawongblog.disqus.com/count.js" async></script>
+    </body>
+</html>
