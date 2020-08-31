@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Samawong&#39;s Notes</title>
+    <link>http://samawong.github.io/tags/</link>
+    <description>Recent content in Tags on Samawong&#39;s Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© 2020, All Rights Reserved</copyright>
+    <lastBuildDate>Sun, 30 Aug 2020 18:16:27 +0800</lastBuildDate>
+    
+	<atom:link href="http://samawong.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Android</title>
+      <link>http://samawong.github.io/tags/android/</link>
+      <pubDate>Sun, 30 Aug 2020 18:16:27 +0800</pubDate>
+      
+      <guid>http://samawong.github.io/tags/android/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kubernetes Cluster</title>
+      <link>http://samawong.github.io/tags/kubernetes-cluster/</link>
+      <pubDate>Thu, 27 Aug 2020 23:52:56 +0800</pubDate>
+      
+      <guid>http://samawong.github.io/tags/kubernetes-cluster/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>N1</title>
+      <link>http://samawong.github.io/tags/n1/</link>
+      <pubDate>Thu, 27 Aug 2020 23:52:56 +0800</pubDate>
+      
+      <guid>http://samawong.github.io/tags/n1/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

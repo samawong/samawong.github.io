@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Samawong&#39;s Notes</title>
+    <link>http://samawong.github.io/</link>
+    <description>Recent content on Samawong&#39;s Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© 2020, All Rights Reserved</copyright>
+    <lastBuildDate>Sun, 30 Aug 2020 18:16:27 +0800</lastBuildDate>
+    
+	<atom:link href="http://samawong.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Use Adb Command to Debug Android Device</title>
+      <link>http://samawong.github.io/posts/use-adb-command-to-debug-android-device/</link>
+      <pubDate>Sun, 30 Aug 2020 18:16:27 +0800</pubDate>
+      
+      <guid>http://samawong.github.io/posts/use-adb-command-to-debug-android-device/</guid>
+      <description>​手中有一台空气净化器的控制平板，屏幕触摸无外接件，所以无触摸功能，接口少，手边也没有OTG线，不然可以外接鼠标或键盘来进行操作，因此，请上Android下的adb命令来进行操作。</description>
+    </item>
+    
+    <item>
+      <title>Use Phicomm N1 install Kubernetes Cluster</title>
+      <link>http://samawong.github.io/posts/use-n1-install-kubernetes-cluster/</link>
+      <pubDate>Thu, 27 Aug 2020 23:52:56 +0800</pubDate>
+      
+      <guid>http://samawong.github.io/posts/use-n1-install-kubernetes-cluster/</guid>
+      <description>手里面有两台斐讯N1，一台一直做TV盒子使用，另一台吃灰中，最近做TV盒子的那台播放电视家的时候，动不动就返回主页，同时，开启HDMI CEC后，尽管索尼的遥控器可以直接无缝匹配N1，但遥控起来轻飘飘的， 所以还是找出了吃灰中的小米盒子3拿来做TV盒子使用，然后将这两台N1安装armbian，尝试着安装kubernetes cluster，以下为详细安装步骤：</description>
+    </item>
+    
+    <item>
+      <title>关于</title>
+      <link>http://samawong.github.io/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://samawong.github.io/about/</guid>
+      <description>关于</description>
+    </item>
+    
+    <item>
+      <title>文章归档</title>
+      <link>http://samawong.github.io/archives/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://samawong.github.io/archives/</guid>
+      <description>历史文章按照年月日归档</description>
+    </item>
+    
+    <item>
+      <title>标签</title>
+      <link>http://samawong.github.io/tags/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://samawong.github.io/tags/</guid>
+      <description>标签</description>
+    </item>
+    
+    <item>
+      <title>类别</title>
+      <link>http://samawong.github.io/categories/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://samawong.github.io/categories/</guid>
+      <description>类别</description>
+    </item>
+    
+  </channel>
+</rss>
