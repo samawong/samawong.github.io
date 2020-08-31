@@ -31,7 +31,7 @@ jobs:
 
       # Build
       - name: Build
-        run: hugo --minfy
+        run: hugo
 
       # Deploy
       - name: Deploy
