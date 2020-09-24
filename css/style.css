@@ -64,7 +64,7 @@ body {
   a,
   .exampleHeading .text,
   .expandAll {
-    color: #007d9c;
+    color: #000000;
     text-decoration: none;
   }
   a:hover,
@@ -130,7 +130,7 @@ body {
   }
   h2 {
     font-size: 1.25rem;
-    background: #e0ebf5;
+    
     padding: 0.5rem;
     line-height: 1.25;
     font-weight: normal;
@@ -609,7 +609,7 @@ body {
       margin: 1rem auto 0;
     }
     .Footer-links {
-      padding-left: 6.25rem;
+      
       text-align: left;
     }
     .Footer-link {
@@ -892,4 +892,8 @@ body {
 
 summary {
   margin: 2rem 0 0 3.8rem;
+}
+
+.author {
+  font-size: x-small;
 }
