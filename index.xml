@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© 2020, All Rights Reserved</copyright>
-    <lastBuildDate>Thu, 24 Sep 2020 16:23:15 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 27 Sep 2020 19:22:34 +0800</lastBuildDate>
     
 	<atom:link href="http://samawong.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Solutions Using Postgresql</title>
+      <link>http://samawong.github.io/posts/solutions-using-postgresql/</link>
+      <pubDate>Sun, 27 Sep 2020 19:22:34 +0800</pubDate>
+      
+      <guid>http://samawong.github.io/posts/solutions-using-postgresql/</guid>
+      <description>（本篇为译文1,如有侵权，联系删除。）</description>
+    </item>
     
     <item>
       <title>Change Armbian Source</title>
