@@ -49,6 +49,15 @@
     </item>
     
     <item>
+      <title></title>
+      <link>http://samawong.github.io/posts/use-factory-and-seeder-in-laravel/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://samawong.github.io/posts/use-factory-and-seeder-in-laravel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>关于</title>
       <link>http://samawong.github.io/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
