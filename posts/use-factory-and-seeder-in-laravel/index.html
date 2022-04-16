@@ -6,14 +6,14 @@
 <title> - Samawong&#39;s Notes</title>
 <meta name="description" content="">
     <meta property="og:title" content="" />
-<meta property="og:description" content="" />
+<meta property="og:description" content="在laravel中，我们在创建完model后，如果需要添加测试数据来进行测试，可以使用Factory或Seeder来简单生成测试数据。 本文简单描述一下这两者的使用的过程：" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://samawong.github.io/posts/use-factory-and-seeder-in-laravel/" />
 
 
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content=""/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:description" content="在laravel中，我们在创建完model后，如果需要添加测试数据来进行测试，可以使用Factory或Seeder来简单生成测试数据。 本文简单描述一下这两者的使用的过程："/>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="/css/style.css">
@@ -52,12 +52,61 @@
 
 <p class="author">
     发布于0001-01-01，
-    文章约0字， 
-    阅读约需0分钟。
+    文章约91字， 
+    阅读约需1分钟。
     
 </hp>
 <hr/>
 
+<p>在laravel中，我们在创建完model后，如果需要添加测试数据来进行测试，可以使用Factory或Seeder来简单生成测试数据。
+本文简单描述一下这两者的使用的过程：</p>
+<h3 id="factory">Factory</h3>
+<p>Factory,字面意思就是工厂，工厂嘛，就是批量生产的意思，在使用laravel脚手架生成项目目录时，会在database\factories目录下，生成一个UserFactory.php的文件,在文件的definition()函数里，有官方默认的对User的部分字段的faker定义：</p>
+<pre><code>public function definition()
+    {
+        return [
+            'name' =&gt; $this-&gt;faker-&gt;name(),
+            'email' =&gt; $this-&gt;faker-&gt;unique()-&gt;safeEmail(),
+            'email_verified_at' =&gt; now(),
+            'password' =&gt; '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' =&gt; Str::random(10),
+        ];
+    }
+</code></pre><p>这里的<code>$this-&gt;faker</code>用的是<a href="https://fakerphp.github.io/">Faker PHP库</a>，主要是用他来生成字段的测试内容。</p>
+<p>在这里，我新建了一个Post模型，User和Post两者是一对多的关系，其中Post主要有两个字段，title和body，还有一个user_id来连接User模型，我们使用Factory来生成测试数据。
+1、生成PostFactory文件：</p>
+<pre><code>php artisan make:factory PostFactory -m Post
+</code></pre><p>后缀&rsquo; -m Post&rsquo;字面上是该factory跟Post模型绑定在一起，我对比了一下生成的factory代码，好像就只有代码里的第8行最后的model字段修改了一下，如果带&rsquo;-m&rsquo;参数，则该行第8行的注释就详细到那个model,如果没有该字段，则就只有默认的model，上图：
+<img src="/images/post/0416/post_model-1.png" alt="使用&rsquo;-m&rsquo;参数时的第8行代码对比"></p>
+<p>然后在该PostFactory.php文件内新增如下代码：
+<img src="/images/post/0416/post_model-2.png" alt="PostFactory.php字段faker定义">,其中，<code> $this-&gt;faker-&gt;sentence()</code>可以创建一个默认是6个词的句子。</p>
+<p>这样，Post模型的字段测试代码也基本完成，接下来就是如何使用了，简单的测试使用时，首先运行<code> php artisan tinker</code>，接下来可以运行的语句就多了，比如说<code> User::factory()-&gt;has(App\Models\Post::factory()-&gt;count(3))-&gt;make();</code>,可以测试生成语句是否正确，如果需要将数据写入数据库，只需将最后的<code>make()</code>换成<code>create()</code>即可。如下图所示：
+<img src="/images/post/0416/user-post-hasmany-create-one-1.png" alt="create()->saveindatabase">
+同时，数据库内也可查询到生成的数据：
+<img src="/images/post/0416/user-post-hasmany-create-one-2.png" alt="create()->saveindatabase"></p>
+<p>当然，上面的语句也可以写成如下这样：
+<code> User::factory()-&gt;hasposts()-&gt;count(3)-&gt;create();</code>
+或
+<code> User::factory(3)-&gt;hasposts()-&gt;create();</code>
+<em>两条语句结果一样，都是生成3条User信息并各自对应1条post内容</em></p>
+<h3 id="seeder">Seeder</h3>
+<p>Seeder的使用相对简单一些，在脚手架生成的默认文件里，在database\seeders目录内，相对应的，也有默认的seeder文件：DatabaseSeeder.php，打开后，我们可以看到里面关键的应该是run()函数，里面注释的一句代码<code>// \App\Models\User::factory(10)-&gt;create();</code>,跟上面的factory的生成代码何其相似，所以，会不会是只需要将上述的factory运行代码写入这里即可？简单测试一下：修改DatabaseSeeder.php页面内的代码，在上述注释代码下新增上文我们运行正确的语句：</p>
+<pre><code>class DatabaseSeeder extends Seeder
+{
+    /**
+     * Seed the application's database.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        // \App\Models\User::factory(10)-&gt;create();
+        User::factory(3)-&gt;hasposts()-&gt;create();
+    }
+}
+</code></pre><p>,保存后，运行<code>php artisan db:seed --class=DatabaseSeeder</code>即可，<img src="/images/post/0416/seeder-run-1.png" alt="seeder运行成功">
+同时，检查数据库内是否写入数据。</p>
+<p>两种生成测试数据的办法，看使用者如何去使用了。结束！</p>
 
 <div id="disqus_thread"></div>
 <script>

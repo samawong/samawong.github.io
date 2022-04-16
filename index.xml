@@ -54,7 +54,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://samawong.github.io/posts/use-factory-and-seeder-in-laravel/</guid>
-      <description></description>
+      <description>在laravel中，我们在创建完model后，如果需要添加测试数据来进行测试，可以使用Factory或Seeder来简单生成测试数据。 本文简单描述一下这两者的使用的过程：</description>
     </item>
     
     <item>
