@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© 2020, All Rights Reserved</copyright>
-    <lastBuildDate>Sun, 27 Sep 2020 19:22:34 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 16 Apr 2022 22:35:15 +0800</lastBuildDate>
     
 	<atom:link href="http://samawong.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>use Factory and Seeder in laravel</title>
+      <link>http://samawong.github.io/posts/use-factory-and-seeder-in-laravel/</link>
+      <pubDate>Sat, 16 Apr 2022 22:35:15 +0800</pubDate>
+      
+      <guid>http://samawong.github.io/posts/use-factory-and-seeder-in-laravel/</guid>
+      <description>在laravel中，我们在创建完model后，如果需要添加测试数据来进行测试，可以使用Factory或Seeder来简单生成测试数据。 本文简单描述一下这两者的使用的过程：</description>
+    </item>
     
     <item>
       <title>Solutions Using Postgresql</title>
@@ -46,15 +55,6 @@
       
       <guid>http://samawong.github.io/posts/use-n1-install-kubernetes-cluster/</guid>
       <description>手里面有两台斐讯N1，一台一直做TV盒子使用，另一台吃灰中，最近做TV盒子的那台播放电视家的时候，动不动就返回主页，同时，开启HDMI CEC后，尽管索尼的遥控器可以直接无缝匹配N1，但遥控起来轻飘飘的， 所以还是找出了吃灰中的小米盒子3拿来做TV盒子使用，然后将这两台N1安装armbian，尝试着安装kubernetes cluster，以下为详细安装步骤：</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://samawong.github.io/posts/use-factory-and-seeder-in-laravel/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://samawong.github.io/posts/use-factory-and-seeder-in-laravel/</guid>
-      <description>在laravel中，我们在创建完model后，如果需要添加测试数据来进行测试，可以使用Factory或Seeder来简单生成测试数据。 本文简单描述一下这两者的使用的过程：</description>
     </item>
     
     <item>
