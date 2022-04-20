@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Use Socialite in Laravel - Samawong&#39;s Notes</title>
+<meta name="description" content="在Laravel中，使用Socialite 来集成第三方登录">
+    <meta property="og:title" content="Use Socialite in Laravel" />
+<meta property="og:description" content="在Laravel中，使用Socialite 来集成第三方登录" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://guoqing.me/posts/use-socialite-in-laravel/" />
+<meta property="article:published_time" content="2022-04-20T15:20:15+08:00" />
+<meta property="article:modified_time" content="2022-04-20T15:20:15+08:00" />
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Use Socialite in Laravel"/>
+<meta name="twitter:description" content="在Laravel中，使用Socialite 来集成第三方登录"/>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="/css/style.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5615421277433865"
+     crossorigin="anonymous"></script>
+
+</head><body><header class="Header js-header">
+     
+    
+    <nav class="Header-nav">
+        <a href="/">Samawong&#39;s Notes</a>
+    
+    <button class="Header-menuButton js-headerMenuButton" aria-label="Main menu" aria-expanded="false">
+        <div class="Header-menuButtonInner">
+    </button>
+    <ul class="Header-menu">
+        
+            <li class="Header-menuItem">
+                <a href="/">Home</a>
+            </li>
+        
+            <li class="Header-menuItem">
+                <a href="/archives/">归档</a>
+            </li>
+        
+            <li class="Header-menuItem">
+                <a href="/about/">关于</a>
+            </li>
+        
+    </ul>
+</nav>
+</header>
+<hr/>
+<div id="content">
+<main class="Site-content" id="page">
+
+    <div class="container">
+        <a href="/posts/use-socialite-in-laravel/" class="summary-title-link"><h1>Use Socialite in Laravel</h1></a>
+
+<p class="author">
+    发布于2022-04-20，
+    文章约165字， 
+    阅读约需1分钟。
+    
+</hp>
+<hr/>
+
+<p>在Laravel中，我们可以使用Socialite库来进行第三方认证登录。
+本文简单描述一下使用的过程：</p>
+<h3 id="1安装socialite">1、安装Socialite</h3>
+<pre><code>composer require laravel/socialite
+</code></pre><h3 id="2添加配置文件">2、添加配置文件</h3>
+<p>在<code>config/services.php</code>文件中添加：</p>
+<pre><code>'github' =&gt; [
+    'client_id' =&gt; env('GITHUB_CLIENT_ID'),
+    'client_secret' =&gt; env('GITHUB_CLIENT_SECRET'),
+    'redirect' =&gt; 'http://127.0.0.1/auth/callback/',
+],
+</code></pre><p>同时，需要在<code>.env</code>文件中添加两处变量：
+<code>GITHUB_CLIENT_ID</code>、<code>GITHUB_CLIENT_SECRET</code>。其中<code>GITHUB_CLIENT_ID</code>来自于GitHub账户的<code>Developer settings</code>-&gt;<code>OAuth Apps</code>新建应用的<code>Client ID</code>，<code>GITHUB_CLIENT_SECRET</code>亦是该新建应用的<code>Client_Secret</code>.(在新建应用时，<code>Authorization callback URL</code>处添加的地址可以使用本地地址，比如说127.0.0.1或者localhost之类的)</p>
+<h3 id="3添加route路由">3、添加route路由</h3>
+<p>修改<code>route\web.php</code>文件：</p>
+<pre><code>use Laravel\Socialite\Facades\Socialite;
+
+//定义点击登录按钮后的跳转路径
+Route::get('/auth/redirect', function () {
+    return Socialite::driver('github')-&gt;redirect();
+});
+
+ //定义认证后的返回路径
+Route::get('/auth/callback', function () {
+    $user = Socialite::driver('github')-&gt;user();
+ 
+    dd($user);
+});
+</code></pre><h3 id="4view-页面调整">4、view 页面调整</h3>
+<p>主要是registe页面和login页面，在相应位置添加登录按钮
+<img src="/images/post/0420/view.png" alt="view">
+ButtonLink component是复制Button组件修改了一下</p>
+<h3 id="5测试">5、测试</h3>
+<p>浏览器访问http://127.0.0.1/login查看页面并选择github登录，登录成功后，应该会出现用户信息；</p>
+<h3 id="6保存数据">6、保存数据</h3>
+<ul>
+<li>在create_user_table的迁移文件中修改：</li>
+</ul>
+<pre><code>        Schema::create('users', function (Blueprint $table) {
+            $table-&gt;id();
+            $table-&gt;string('name');
+            $table-&gt;string('email')-&gt;unique();
+            $table-&gt;timestamp('email_verified_at')-&gt;nullable();
+            $table-&gt;string('password')-&gt;nullable();
+            $table-&gt;string('github_id')-&gt;nullable();
+            $table-&gt;string('github_token')-&gt;nullable();
+            $table-&gt;string('github_refresh_token')-&gt;nullable();
+            $table-&gt;rememberToken();
+            $table-&gt;timestamps();
+        });
+    }
+
+</code></pre><ul>
+<li>运行<code>php artisan migrate</code></li>
+<li>修改 <code>route\web.php</code>文件的callback块：</li>
+</ul>
+<pre><code>use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
+Route::get('/auth/callback', function () {
+    $githubUser = Socialite::driver('github')-&gt;user();
+ 
+    $user = User::updateOrCreate([
+        'github_id' =&gt; $githubUser-&gt;id,
+    ], [
+        'name' =&gt; $githubUser-&gt;name,
+        'email' =&gt; $githubUser-&gt;email,
+        'github_token' =&gt; $githubUser-&gt;token,
+        'github_refresh_token' =&gt; $githubUser-&gt;refreshToken,
+    ]);
+ 
+    Auth::login($user);
+ 
+    return redirect('/dashboard');
+});
+
+</code></pre><ul>
+<li>修改<code>App\Models\User.php</code>：</li>
+</ul>
+<pre><code>/**
+     * The attributes that are mass assignable.
+     *
+     * @var array&lt;int, string&gt;
+     */
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'github_id',
+        'github_token',
+        'github_refresh_token',
+    ];
+</code></pre><p>或者将该段删掉，同时在<code>AppServiceProvider.php</code>中修改</p>
+<pre><code>/**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        //add this 
+        Model::unguard();
+    }
+</code></pre><h3 id="7继续测试应该正常了">7、继续测试，应该正常了！</h3>
+<p>撒花</p>
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://samawongblog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+</div>
+</main>
+
+        </div><footer>
+    <div class="Footer">
+      <ul class="Footer-links">
+        <li class="Footer-link"><span>© 2020-2022, All Rights Reserved</span></li>
+        <li class="Footer-link"><a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎</a></li>
+        <li class="Footer-link"><a href="http://github.com/samawong">Github</a></li>
+        <li class="Footer-link"><a href="http://t.me/samawong" target="_blank" >Telegram</a></li>
+      </ul>
+      <a class="Footer-supportedBy" href="https://gohugo.io">Supported by HUGO</a>
+    </div>
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-176828723-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-176828723-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  </footer><script id="dsq-count-scr" src="//samawongblog.disqus.com/count.js" async></script>
+    </body>
+</html>
