@@ -3,18 +3,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>use fulltext search in laravel 9 - Samawong&#39;s Notes</title>
-<meta name="description" content="在laravel 9.x 版本中，model定义字段时可以新增fulltext()索引，提供字段的全文搜索功能。">
-    <meta property="og:title" content="use fulltext search in laravel 9" />
-<meta property="og:description" content="在laravel 9.x 版本中，model定义字段时可以新增fulltext()索引，提供字段的全文搜索功能。" />
+<title>Use umami to do website analytics - Samawong&#39;s Notes</title>
+<meta name="description" content="We can use umami to make a fast,beauiful,simple website analytics">
+    <meta property="og:title" content="Use umami to do website analytics" />
+<meta property="og:description" content="We can use umami to make a fast,beauiful,simple website analytics" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://guoqing.me/posts/use-fulltextsearch-in-laravel-9/" />
-<meta property="article:published_time" content="2022-04-17T22:54:15+08:00" />
-<meta property="article:modified_time" content="2022-04-17T22:54:15+08:00" />
+<meta property="og:url" content="https://guoqing.me/posts/use-umami-to-do-website-analytics/" />
+<meta property="article:published_time" content="2022-04-20T15:20:15+08:00" />
+<meta property="article:modified_time" content="2022-04-20T15:20:15+08:00" />
 
     <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="use fulltext search in laravel 9"/>
-<meta name="twitter:description" content="在laravel 9.x 版本中，model定义字段时可以新增fulltext()索引，提供字段的全文搜索功能。"/>
+<meta name="twitter:title" content="Use umami to do website analytics"/>
+<meta name="twitter:description" content="We can use umami to make a fast,beauiful,simple website analytics"/>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="/css/style.css">
@@ -53,22 +53,23 @@
 <main class="Site-content" id="page">
 
     <div class="container">
-        <a href="/posts/use-fulltextsearch-in-laravel-9/" class="summary-title-link"><h1>use fulltext search in laravel 9</h1></a>
+        <a href="/posts/use-umami-to-do-website-analytics/" class="summary-title-link"><h1>Use umami to do website analytics</h1></a>
 
 <p class="author">
-    发布于2022-04-17，
-    文章约11字， 
+    发布于2022-04-20，
+    文章约102字， 
     阅读约需1分钟。
     
 </hp>
 <hr/>
 
-<p>在laravel 9.x 版本中，model定义字段时可以新增fulltext()索引，提供字段的全文搜索功能。
-<strong>ps:目前要使用该功能需要配置数据库为MySQL或PostgreSQL.</strong></p>
-<p>使用如下：
-1、比如说post表内有个字段为body,在migrantion内定义时，这样定义：<code>$table-&gt;text('body')-&gt;fulltext();</code>,就可以对body列开启fulltext全文检索了。
-2、使用时，使用<code>whereFullText('查询的列名称','要查询的字段') </code>来查询，比如说查询post表内查body字段含有&rsquo;est&rsquo;的记录，可以这样<code> $posts = DB::table('posts')-&gt;whereFullText('body','est')-&gt;get();</code>,如下所示：
-<img src="/images/post/0417/no-fulltext-2.png" alt="whereFullText查询"></p>
+<p>When we make a website,we can use google analytics to get the website access source or more infomation if we want.Now I find a tools named umami to do like this thing,and it&rsquo;s beautiful,fast and simple. So I use it to this website,you can click the Analytics link on foot to brower the data of this site.</p>
+<h3 id="1what-is-umami">1、What is umami?</h3>
+<p>website:<a href="https://umami.is">umami</a></p>
+<h3 id="2install">2、Install</h3>
+<p>we can install it with source or docker in your owe server, it&rsquo;s simple. It also provide some other ways to install,like <a href="https://umami.is/docs/running-to-digitalocean">Running to DigitalOcean</a>、<a href="https://umami.is/docs/running-to-vercel">Running to Vercel</a> etc,you can find the more guides in <a href="https://umami.is/docs">this</a>.</p>
+<p>I install it on <a href="https://railway.com">Railway</a>.</p>
+<p><img src="/images/post/0425/umami-production-382b.up.railway.app_share_sNSRtIuy_w.png" alt="demo"></p>
 
 <div id="disqus_thread"></div>
 <script>

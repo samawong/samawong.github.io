@@ -22,6 +22,15 @@
     </item>
     
     <item>
+      <title>Use umami to do website analytics</title>
+      <link>https://guoqing.me/posts/use-umami-to-do-website-analytics/</link>
+      <pubDate>Wed, 20 Apr 2022 15:20:15 +0800</pubDate>
+      
+      <guid>https://guoqing.me/posts/use-umami-to-do-website-analytics/</guid>
+      <description>When we make a website,we can use google analytics to get the website access source or more infomation if we want.</description>
+    </item>
+    
+    <item>
       <title>use fulltext search in laravel 9</title>
       <link>https://guoqing.me/posts/use-fulltextsearch-in-laravel-9/</link>
       <pubDate>Sun, 17 Apr 2022 22:54:15 +0800</pubDate>
