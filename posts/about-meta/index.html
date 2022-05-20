@@ -102,7 +102,7 @@
 
 </code></pre><p>我们一行行解释：</p>
 <p><code>&lt;!DOCTYPE html&gt;</code> 定义文档类型为 html格式；
-<code>&lt;html dir=&quot;ltr&quot; lang=&quot;zh&quot;&gt;</code> 根元素，包含整个页面的内容，<code>dir=&quot;ltr&quot;</code> 表示元素的文本方向性，这里是从左到右（left to right）明确的方向隔离，<code>lang</code>定义了页面的默认语言（zh）;
+<code>&lt;html dir=&quot;ltr&quot; lang=&quot;zh&quot;&gt; </code> 根元素，包含整个页面的内容，<code>dir=&quot;ltr&quot;</code> 表示元素的文本方向性，这里是从左到右（left to right）明确的方向隔离，<code>lang</code>定义了页面的默认语言（zh）;
 <code>&lt;meta charset=&quot;utf-8&quot; /&gt; </code> 页面文档使用 UTF-8 字符编码;
 <code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover&quot; /&gt;</code> 为viewport(视口)初始大小提供指示(hint)，目前用于移动设备。<code>content</code>内为属性值， <code>width</code>定义 viewport 的宽度（或使用正整数（单位像素）），<code>initial-scale</code>介于<code>0.0</code>和<code>10.0</code>之间的正数，定义设备宽度，这里1就是缩放比例不动，原始大小，<code>maximum-scale</code>介于<code>0.0</code>和<code>10.0</code>之间的正数，定义缩放最大值，1表示原始大小，<code>user-scalabe</code>表示用户是否可以缩放当前页面，<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/meta/name">MDN文档</a>上的值为<code>yes</code>或<code>no</code>，这里用0来表示，应该是<code>no</code>的意思，<code>viewport-fit</code>表示显示的填充方式（<code>auto</code>、<code>contain</code> 和 <code>cover</code>）；
 <code>&lt;link rel=&quot;preconnect&quot; href=&quot;//abs.twimg.com&quot; /&gt;</code> 提示建议浏览器提前打开与链接网站的连接；
@@ -163,6 +163,7 @@
   &lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; href=&quot;favicon.png&quot; /&gt;
 
 ...
+
 </code></pre><p>在<code>&lt;header&gt;</code>里，首先是个<code>&lt;base href=&quot;/&quot;&gt;</code>，这个我是第一次看见，第一次知道这个，文档根 URL 元素，指定用于一个文档中包含的所有相对 URL 的根 URL。一份中只能有一个 <base> 元素。
 后面的<code>http-equiv</code>、<code>description</code>、<code>og:description</code>、<code>og：title</code>、<code>og:url</code>、<code>og:image</code>什么的比较常见，之后是一块Twitter Share Data,</p>
 <pre><code>&lt;!-- Twitter Share Data --&gt;
