@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>About meta in html source - Samawong&#39;s Notes</title>
+<meta name="description" content="网站源码的头部里meta都有些什么含义？">
+    <meta property="og:title" content="About meta in html source" />
+<meta property="og:description" content="网站源码的头部里meta都有些什么含义？" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://guoqing.me/posts/about-meta/" />
+<meta property="article:published_time" content="2022-05-20T13:23:15+08:00" />
+<meta property="article:modified_time" content="2022-05-20T13:23:15+08:00" />
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="About meta in html source"/>
+<meta name="twitter:description" content="网站源码的头部里meta都有些什么含义？"/>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="/css/style.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5615421277433865"
+     crossorigin="anonymous"></script>
+<script async defer data-website-id="6b208eef-c727-4cd7-9a41-a10db4ebc9d3" src="https://umami-production-382b.up.railway.app/umami.js">
+</script>
+</head><body><header class="Header js-header">
+     
+    
+    <nav class="Header-nav">
+        <a href="/">Samawong&#39;s Notes</a>
+    
+    <button class="Header-menuButton js-headerMenuButton" aria-label="Main menu" aria-expanded="false">
+        <div class="Header-menuButtonInner">
+    </button>
+    <ul class="Header-menu">
+        
+            <li class="Header-menuItem">
+                <a href="/">Home</a>
+            </li>
+        
+            <li class="Header-menuItem">
+                <a href="/archives/">归档</a>
+            </li>
+        
+            <li class="Header-menuItem">
+                <a href="/about/">关于</a>
+            </li>
+        
+    </ul>
+</nav>
+</header>
+<hr/>
+<div id="content">
+<main class="Site-content" id="page">
+
+    <div class="container">
+        <a href="/posts/about-meta/" class="summary-title-link"><h1>About meta in html source</h1></a>
+
+<p class="author">
+    发布于2022-05-20，
+    文章约515字， 
+    阅读约需3分钟。
+    
+</hp>
+<hr/>
+
+<p>在前端面试过程中，有这么一道题目，是描述一下 Twitter 网站源代码里，前十行代表什么意思。这里先重温一下前几行都有哪些：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html dir=&quot;ltr&quot; lang=&quot;zh&quot;&gt;
+&lt;meta charset=&quot;utf-8&quot; /&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover&quot; /&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;//abs.twimg.com&quot; /&gt;
+&lt;link rel=&quot;dns-prefetch&quot; href=&quot;//abs.twimg.com&quot; /&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;//api.twitter.com&quot; /&gt;
+&lt;link rel=&quot;dns-prefetch&quot; href=&quot;//api.twitter.com&quot; /&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;//pbs.twimg.com&quot; /&gt;
+&lt;link rel=&quot;dns-prefetch&quot; href=&quot;//pbs.twimg.com&quot; /&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;//t.co&quot; /&gt;
+&lt;link rel=&quot;dns-prefetch&quot; href=&quot;//t.co&quot; /&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;//video.twimg.com&quot; /&gt;
+&lt;link rel=&quot;dns-prefetch&quot; href=&quot;//video.twimg.com&quot; /&gt;
+&lt;link rel=&quot;preload&quot; as=&quot;script&quot; crossorigin=&quot;anonymous&quot; href=&quot;https://abs.twimg.com/responsive-web/client-web/polyfills.87e4d906.js&quot; nonce=&quot;NDE1ZGU3MGQtYTg1My00ZWFhLWE1ZjMtNmVkMDNkZDBjZDc3&quot; /&gt;
+&lt;link rel=&quot;preload&quot; as=&quot;script&quot; crossorigin=&quot;anonymous&quot; href=&quot;https://abs.twimg.com/responsive-web/client-web/vendors~main.b550e1d6.js&quot; nonce=&quot;NDE1ZGU3MGQtYTg1My00ZWFhLWE1ZjMtNmVkMDNkZDBjZDc3&quot; /&gt;
+&lt;link rel=&quot;preload&quot; as=&quot;script&quot; crossorigin=&quot;anonymous&quot; href=&quot;https://abs.twimg.com/responsive-web/client-web/i18n/zh.c1adcb56.js&quot; nonce=&quot;NDE1ZGU3MGQtYTg1My00ZWFhLWE1ZjMtNmVkMDNkZDBjZDc3&quot; /&gt;
+&lt;link rel=&quot;preload&quot; as=&quot;script&quot; crossorigin=&quot;anonymous&quot; href=&quot;https://abs.twimg.com/responsive-web/client-web/main.293bcf66.js&quot; nonce=&quot;NDE1ZGU3MGQtYTg1My00ZWFhLWE1ZjMtNmVkMDNkZDBjZDc3&quot; /&gt;
+&lt;meta property=&quot;fb:app_id&quot; content=&quot;2231777543&quot; /&gt;
+&lt;meta property=&quot;og:site_name&quot; content=&quot;Twitter&quot; /&gt;
+&lt;meta name=&quot;google-site-verification&quot; content=&quot;acYOOcR5z6puMzLn6hLDZI1nNHXPxt57OIstz1vnCV0&quot; /&gt;
+&lt;meta name=&quot;facebook-domain-verification&quot; content=&quot;x6sdcc8b5ju3bh8nbm59eswogvg6t1&quot; /&gt;
+&lt;meta http-equiv=&quot;onion-location&quot; content=&quot;https://twitter3e4tixl4xyajtrzo62zg5vztmjuricljdp2c5kshju4avyoid.onion/&quot; /&gt;
+&lt;link rel=&quot;manifest&quot; href=&quot;/manifest.json&quot; crossOrigin=&quot;use-credentials&quot; /&gt;
+&lt;link rel=&quot;alternate&quot; hreflang=&quot;x-default&quot; href=&quot;https://twitter.com/&quot; /&gt;
+&lt;link rel=&quot;search&quot; type=&quot;application/opensearchdescription+xml&quot; href=&quot;/opensearch.xml&quot; title=&quot;Twitter&quot;&gt;
+&lt;link rel=&quot;mask-icon&quot; sizes=&quot;any&quot; href=&quot;https://abs.twimg.com/responsive-web/client-web/icon-svg.168b89d6.svg&quot; color=&quot;#1D9BF0&quot;&gt;
+&lt;link rel=&quot;shortcut icon&quot; href=&quot;//abs.twimg.com/favicons/twitter.2.ico&quot;&gt;
+&lt;link rel=&quot;apple-touch-icon&quot; sizes=&quot;192x192&quot; href=&quot;https://abs.twimg.com/responsive-web/client-web/icon-ios.b1fc7276.png&quot; /&gt;
+&lt;meta name=&quot;mobile-web-app-capable&quot; content=&quot;yes&quot; /&gt;
+&lt;meta name=&quot;apple-mobile-web-app-title&quot; content=&quot;Twitter&quot; /&gt;
+&lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;white&quot; /&gt;
+&lt;meta name=&quot;theme-color&quot; content=&quot;#ffffff&quot; /&gt;
+&lt;meta http-equiv=&quot;origin-trial&quot; content=&quot;AlpCmb40F5ZjDi9ZYe+wnr/V8MF+XmY41K4qUhoq+2mbepJTNd3q4CRqlACfnythEPZqcjryfAS1+ExS0FFRcA8AAABmeyJvcmlnaW4iOiJodHRwczovL3R3aXR0ZXIuY29tOjQ0MyIsImZlYXR1cmUiOiJMYXVuY2ggSGFuZGxlciIsImV4cGlyeSI6MTY1NTI1MTE5OSwiaXNTdWJkb21haW4iOnRydWV9&quot; /&gt;
+...
+
+</code></pre><p>我们一行行解释：</p>
+<p><code>&lt;!DOCTYPE html&gt;</code> 定义文档类型为 html格式；
+<code>&lt;html dir=&quot;ltr&quot; lang=&quot;zh&quot;&gt;</code> 根元素，包含整个页面的内容，<code>dir=&quot;ltr&quot;</code> 表示元素的文本方向性，这里是从左到右（left to right）明确的方向隔离，<code>lang</code>定义了页面的默认语言（zh）;
+<code>&lt;meta charset=&quot;utf-8&quot; /&gt; </code> 页面文档使用 UTF-8 字符编码;
+<code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover&quot; /&gt;</code> 为viewport(视口)初始大小提供指示(hint)，目前用于移动设备。<code>content</code>内为属性值， <code>width</code>定义 viewport 的宽度（或使用正整数（单位像素）），<code>initial-scale</code>介于<code>0.0</code>和<code>10.0</code>之间的正数，定义设备宽度，这里1就是缩放比例不动，原始大小，<code>maximum-scale</code>介于<code>0.0</code>和<code>10.0</code>之间的正数，定义缩放最大值，1表示原始大小，<code>user-scalabe</code>表示用户是否可以缩放当前页面，<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/meta/name">MDN文档</a>上的值为<code>yes</code>或<code>no</code>，这里用0来表示，应该是<code>no</code>的意思，<code>viewport-fit</code>表示显示的填充方式（<code>auto</code>、<code>contain</code> 和 <code>cover</code>）；
+<code>&lt;link rel=&quot;preconnect&quot; href=&quot;//abs.twimg.com&quot; /&gt;</code> 提示建议浏览器提前打开与链接网站的连接；
+<code>&lt;link rel=&quot;dns-prefetch&quot; href=&quot;//abs.twimg.com&quot; /&gt;</code>提示浏览器该资源需要在用户点击链接之前进行 DNS 查询和协议握手；
+<code>&lt;link rel=&quot;preload&quot; as=&quot;script&quot; crossorigin=&quot;anonymous&quot; href=&quot;https://abs.twimg.com/responsive-web/client-web/polyfills.87e4d906.js&quot; nonce=&quot;NDE1ZGU3MGQtYTg1My00ZWFhLWE1ZjMtNmVkMDNkZDBjZDc3&quot; /&gt;</code>表示浏览器应该预加载该资源，<code>as</code>属性表示获取特定的内容类(<code>script</code>),<code>crossorigin</code>属性表示该资源是否应该使用一个CORS请求来获取;
+<code>&lt;meta property=&quot;fb:app_id&quot; content=&quot;2231777543&quot; /&gt;</code> 这应该定义是 Facebook 应用ID的；
+<code>&lt;meta property=&quot;og:site_name&quot; content=&quot;Twitter&quot; /&gt;</code> 在 Open Graph protocol 中，网站名称为Twitter，<code>property</code>值中带<code>og</code>开头的都是 Open Graph protocol协议；
+<code>&lt;meta http-equiv=&quot;onion-location&quot; content=&quot;https://twitter3e4tixl4xyajtrzo62zg5vztmjuricljdp2c5kshju4avyoid.onion/&quot; /&gt;</code> 这是洋葱网站的地址，就是那个是洋葱头的网站；
+<code>&lt;link rel=&quot;manifest&quot; href=&quot;/manifest.json&quot; crossOrigin=&quot;use-credentials&quot; /&gt;</code> 表示链接到的文件是 Web App Manifest；
+后面的一些都是特殊定义，像<code>apple-mobile-web-app-title</code>的值<code>Twitter</code>,字面意思也能猜出什么。</p>
+<p>然后，<a href="https://flutter.dev">flutter</a>团队复刻了Windows上经典的<a href="https://pinball.flutter.dev">弹珠游戏</a>，我们可以看一下flutter生成的web页面前几行有什么意思：</p>
+<pre><code>...
+&lt;head&gt;
+  &lt;!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash &quot;/&quot; in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  --&gt;
+  &lt;base href=&quot;/&quot;&gt;
+
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta content=&quot;IE=Edge&quot; http-equiv=&quot;X-UA-Compatible&quot;&gt;
+  &lt;meta name=&quot;description&quot;
+    content=&quot;Come play Pinball with your favorite Google Developer Mascots! Built with Flutter &amp; Firebase for Google I/O 2022.&quot;&gt;
+  &lt;meta property=&quot;og:description&quot;
+    content=&quot;Come play Pinball with your favorite Google Developer Mascots! Built with Flutter &amp; Firebase for Google I/O 2022.&quot;&gt;
+
+  &lt;!-- Open Graph Data --&gt;
+  &lt;meta property=&quot;og:title&quot; content=&quot;Google I/O Pinball&quot;&gt;
+  &lt;meta property=&quot;og:url&quot; content=&quot;https://pinball.flutter.dev&quot;&gt;
+  &lt;meta property=&quot;og:image&quot;
+  content=&quot;https://firebasestorage.googleapis.com/v0/b/io-pinball.appspot.com/o/images%2Fpinball_share_image.png?alt=media&quot;&gt;
+
+  &lt;!-- Twitter Share Data --&gt;
+  &lt;meta name=&quot;twitter:image&quot;
+    content=&quot;https://firebasestorage.googleapis.com/v0/b/io-pinball.appspot.com/o/images%2Fpinball_share_image.png?alt=media&quot;&gt;
+  &lt;meta name=&quot;twitter:text:title&quot; content=&quot;I/O Pinball Machine - Flutter&quot;&gt;
+  &lt;meta name=&quot;twitter:card&quot; content=&quot;summary_large_image&quot;&gt;
+  &lt;meta name=&quot;twitter:title&quot; content=&quot;I/O Pinball Machine - Flutter&quot;&gt;
+  &lt;meta name=&quot;twitter:description&quot;
+    content=&quot;Come play Pinball with your favorite Google Developer Mascots! Built with Flutter &amp; Firebase for Google I/O 2022.&quot;&gt;
+
+  &lt;!-- iOS meta tags &amp; icons --&gt;
+  &lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot;&gt;
+  &lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;black&quot;&gt;
+  &lt;meta name=&quot;apple-mobile-web-app-title&quot; content=&quot;I/O Pinball Machine - Flutter&quot;&gt;
+  &lt;link rel=&quot;apple-touch-icon&quot; href=&quot;icons/Icon-192.png&quot;&gt;
+
+  &lt;!-- Favicon --&gt;
+  &lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; href=&quot;favicon.png&quot; /&gt;
+
+...
+</code></pre><p>在<code>&lt;header&gt;</code>里，首先是个<code>&lt;base href=&quot;/&quot;&gt;</code>，这个我是第一次看见，第一次知道这个，文档根 URL 元素，指定用于一个文档中包含的所有相对 URL 的根 URL。一份中只能有一个 <base> 元素。
+后面的<code>http-equiv</code>、<code>description</code>、<code>og:description</code>、<code>og：title</code>、<code>og:url</code>、<code>og:image</code>什么的比较常见，之后是一块Twitter Share Data,</p>
+<pre><code>&lt;!-- Twitter Share Data --&gt;
+  &lt;meta name=&quot;twitter:image&quot;
+    content=&quot;https://firebasestorage.googleapis.com/v0/b/io-pinball.appspot.com/o/images%2Fpinball_share_image.png?alt=media&quot;&gt;
+  &lt;meta name=&quot;twitter:text:title&quot; content=&quot;I/O Pinball Machine - Flutter&quot;&gt;
+  &lt;meta name=&quot;twitter:card&quot; content=&quot;summary_large_image&quot;&gt;
+  &lt;meta name=&quot;twitter:title&quot; content=&quot;I/O Pinball Machine - Flutter&quot;&gt;
+  &lt;meta name=&quot;twitter:description&quot;
+    content=&quot;Come play Pinball with your favorite Google Developer Mascots! Built with Flutter &amp; Firebase for Google I/O 2022.&quot;&gt;
+
+</code></pre><p>看几个<code>name</code>名称，应该是定义了一个twitter 的分享card，card的相关值什么的，我在游戏结束后，点击Twitter分享后，在Twitter出现了一条这样的推文：
+<img src="/images/post/0520/pinball.png" alt="pinball">
+可以看出图片上的内容，跟这款定义的属性基本相似，咱也不知道是巧合还是。。？
+然后把pinball的repo clone下来，运行了一下，啥都没有，也不知道哪出错了？
+唉，学海无涯啊。。。</p>
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://samawongblog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+</div>
+</main>
+
+        </div><footer>
+    <div class="Footer">
+      <ul class="Footer-links">
+        <li class="Footer-link"><span>© 2020-2022, All Rights Reserved</span></li>
+        <li class="Footer-link"><a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎</a></li>
+        <li class="Footer-link"><a href="http://github.com/samawong">Github</a></li>
+        <li class="Footer-link"><a href="http://t.me/samawong" target="_blank" >Telegram</a></li>
+        <li class="Footer-link"><a href="https://umami-production-382b.up.railway.app/share/sNSRtIuy/w" target="_blank" >Analytics</a></li>
+      </ul>
+      <a class="Footer-supportedBy" href="https://gohugo.io">Supported by HUGO</a>
+    </div>
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-176828723-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-176828723-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  </footer><script id="dsq-count-scr" src="//samawongblog.disqus.com/count.js" async></script>
+    </body>
+</html>

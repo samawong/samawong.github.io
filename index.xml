@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hants</language>
     <copyright>© 2020-2022, All Rights Reserved</copyright>
-    <lastBuildDate>Mon, 25 Apr 2022 09:46:15 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 20 May 2022 13:23:15 +0800</lastBuildDate>
     
 	<atom:link href="https://guoqing.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>About meta in html source</title>
+      <link>https://guoqing.me/posts/about-meta/</link>
+      <pubDate>Fri, 20 May 2022 13:23:15 +0800</pubDate>
+      
+      <guid>https://guoqing.me/posts/about-meta/</guid>
+      <description>在前端面试过程中，有这么一道题目，是描述一下 Twitter 网站源代码里，前十行代表什么意思。这里先重温一下前几行都有哪些：</description>
+    </item>
     
     <item>
       <title>Use umami to do website analytics</title>
