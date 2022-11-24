@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Nextjs 13 使用不同样式文件 - Samawong&#39;s Notes</title>
+<meta name="description" content="Nextjs 13 如何使用不同样式文件？">
+    <meta property="og:title" content="Nextjs 13 使用不同样式文件" />
+<meta property="og:description" content="Nextjs 13 如何使用不同样式文件？" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://guoqing.me/posts/nextjs-13.0-%E4%BD%BF%E7%94%A8%E6%A0%B7%E5%BC%8F%E6%96%87%E4%BB%B6%E7%AC%94%E8%AE%B0/" />
+<meta property="article:published_time" content="2022-11-14T16:17:15+08:00" />
+<meta property="article:modified_time" content="2022-11-14T16:17:15+08:00" />
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Nextjs 13 使用不同样式文件"/>
+<meta name="twitter:description" content="Nextjs 13 如何使用不同样式文件？"/>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="/css/style.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5615421277433865"
+     crossorigin="anonymous"></script>
+<script async defer data-website-id="6b208eef-c727-4cd7-9a41-a10db4ebc9d3" src="https://umami-production-382b.up.railway.app/umami.js">
+</script>
+</head><body><header class="Header js-header">
+     
+    
+    <nav class="Header-nav">
+        <a href="/">Samawong&#39;s Notes</a>
+    
+    <button class="Header-menuButton js-headerMenuButton" aria-label="Main menu" aria-expanded="false">
+        <div class="Header-menuButtonInner">
+    </button>
+    <ul class="Header-menu">
+        
+            <li class="Header-menuItem">
+                <a href="/">Home</a>
+            </li>
+        
+            <li class="Header-menuItem">
+                <a href="/archives/">归档</a>
+            </li>
+        
+            <li class="Header-menuItem">
+                <a href="/about/">关于</a>
+            </li>
+        
+    </ul>
+</nav>
+</header>
+<hr/>
+<div id="content">
+<main class="Site-content" id="page">
+
+    <div class="container">
+        <a href="/posts/nextjs-13.0-%E4%BD%BF%E7%94%A8%E6%A0%B7%E5%BC%8F%E6%96%87%E4%BB%B6%E7%AC%94%E8%AE%B0/" class="summary-title-link"><h1>Nextjs 13 使用不同样式文件</h1></a>
+
+<p class="author">
+    发布于2022-11-14，
+    文章约61字， 
+    阅读约需1分钟。
+    
+</hp>
+<hr/>
+
+<p>在Nextjs 13里，对不同的样式文件有不同的规定：</p>
+<p>1、全局定义样式文件，需要在globals.css里写入，比如引入tailwindcss，全局定义背景什么的；</p>
+<p>2、其他独立样式定义可以新建样式文件，然后在需要的页面里导入该样式文件，然后使用{ styles.some-style-prop }的方式来使用；举例说明如下：</p>
+<p>比如说我的Home页面，需要将一处文字加大，我可以在globals.css里定义，但为了独立，我新建了一个Home.module.css文件，里面写入了以下内容：</p>
+<pre><code>/* Home.module.css */
+
+.content{
+    color: grey;
+    font-size: 25px;
+}
+</code></pre><p>然后我在Home的页面里，先导入该样式文件：</p>
+<pre><code>import Home from &quot;../sytles/Home.module.css&quot;;
+</code></pre><p>然后在元素上这样作用：</p>
+<pre><code>&lt;p className={ Home.content }&gt;some bla bla bal bla bla &lt;/p&gt;
+</code></pre><p>当然，如果这个节点全局定义的一些样式，比如说已经有tailwind样式了，还需要一些特殊的样式，我们可以这样来使用：</p>
+<pre><code>&lt;p className={ Home.content + '  px-6 mx-6 '} &gt;some bla bla bal bla bla &lt;/p&gt;
+</code></pre><p>需要注意的是在<code>{ Home.content + '  px-6 mx-6 '} </code>里面，<code>'  px-6 mx-6 ' </code> <code>px-6</code>前面需要添加空格，不然的话前面的样式定义就和<code>px-6</code>连在一起了，然后样式就不起作用了。</p>
+<p>结束！</p>
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://samawongblog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+</div>
+</main>
+
+        </div><footer>
+    <div class="Footer">
+      <ul class="Footer-links">
+        <li class="Footer-link"><span>© 2020-2022, All Rights Reserved</span></li>
+        <li class="Footer-link"><a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎</a></li>
+        <li class="Footer-link"><a href="http://github.com/samawong">Github</a></li>
+        <li class="Footer-link"><a href="http://t.me/samawong" target="_blank" >Telegram</a></li>
+      </ul>
+      <a class="Footer-supportedBy" href="https://gohugo.io">Supported by HUGO</a>
+    </div>
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-176828723-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-176828723-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  </footer>
+<script id="dsq-count-scr" src="//samawongblog.disqus.com/count.js" async></script>
+    </body>
+</html>

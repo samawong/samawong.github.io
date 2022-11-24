@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hants</language>
     <copyright>© 2020-2022, All Rights Reserved</copyright>
-    <lastBuildDate>Fri, 20 May 2022 13:23:15 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 14 Nov 2022 16:17:15 +0800</lastBuildDate>
     
 	<atom:link href="https://guoqing.me/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Nextjs 13 使用不同样式文件</title>
+      <link>https://guoqing.me/posts/nextjs-13.0-%E4%BD%BF%E7%94%A8%E6%A0%B7%E5%BC%8F%E6%96%87%E4%BB%B6%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Mon, 14 Nov 2022 16:17:15 +0800</pubDate>
+      
+      <guid>https://guoqing.me/posts/nextjs-13.0-%E4%BD%BF%E7%94%A8%E6%A0%B7%E5%BC%8F%E6%96%87%E4%BB%B6%E7%AC%94%E8%AE%B0/</guid>
+      <description>在Nextjs 13里，对不同的样式文件有不同的规定：</description>
+    </item>
     
     <item>
       <title>About meta in html source</title>
