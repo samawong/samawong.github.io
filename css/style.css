@@ -37,29 +37,7 @@ body {
     color: #999;
     background: #efefef;
   }
-  .ln {
-    user-select: none;
-  
-    /* Ensure 8 characters in the document - which due to floating
-     * point rendering issues, might have a width of less than 1 each - are 8
-     * characters wide, so a tab in the 9th position indents properly. See
-     * https://github.com/webcompat/web-bugs/issues/17530#issuecomment-402675091
-     * for more information. */
-    display: inline-block;
-    width: 8ch;
-  }
-  
-  .search-nav {
-    margin-left: 1.25rem;
-    font-size: 0.875rem;
-    column-gap: 1.25rem;
-    column-fill: auto;
-    column-width: 14rem;
-  }
-  
-  .search-nav .indent {
-    margin-left: 1.25rem;
-  }
+
   
   a,
   .exampleHeading .text,
@@ -160,72 +138,7 @@ body {
     color: #5279c7;
   }
   
-  dl {
-    margin: 1.25rem;
-  }
-  dd {
-    margin: 0 0 0 1.25rem;
-  }
-  dl,
-  dd {
-    font-size: 0.875rem;
-  }
-  div#nav table td {
-    vertical-align: top;
-  }
-  
-  .ModTable {
-    border-collapse: collapse;
-    margin: 1.25rem;
-    max-width: 50rem;
-  }
-  .ModTable code {
-    white-space: nowrap;
-  }
-  .ModTable td,
-  .ModTable th {
-    border: 1px solid #a9a9a9;
-    padding: 1rem;
-    vertical-align: top;
-  }
-  .ModTable td p {
-    margin: 0 0 1rem 0;
-  }
-  .ModTable td p:last-child {
-    margin-bottom: 0;
-  }
-  
-  #pkg-index h3 {
-    font-size: 1rem;
-  }
-  .pkg-dir {
-    padding: 0 0.625rem;
-  }
-  .pkg-dir table {
-    border-collapse: collapse;
-    border-spacing: 0;
-  }
-  .pkg-name {
-    padding-right: 0.625rem;
-  }
-  .alert {
-    color: #aa0000;
-  }
-  
-  #pkg-examples h3 {
-    float: left;
-  }
-  
-  #pkg-examples dl {
-    clear: both;
-  }
-  
-  .expandAll {
-    cursor: pointer;
-    float: left;
-    margin: 1.25rem 0;
-  }
-  
+ 
   .Site {
     display: flex;
     flex-direction: column;
@@ -254,49 +167,7 @@ body {
   .Footer--wide {
     max-width: none;
   }
-  
-  div#playground .buttons a {
-    background: #375eab;
-    border: 0.0625rem solid #757575;
-    color: white;
-  }
-  
-  /* Style download button on doc/install page */
-  a#start {
-    background: #e0ebf5;
-    border: 0.0625rem solid #375eab;
-    border-radius: 0.3125rem;
-    color: #222;
-    display: block;
-    padding: 0.625rem;
-    text-align: center;
-    text-decoration: none;
-  }
-  a#start .big {
-    display: block;
-    font-size: 1.25rem;
-    font-weight: bold;
-  }
-  a#start .desc {
-    display: block;
-    font-size: 0.875rem;
-    font-weight: normal;
-    margin-top: 0.3125rem;
-  }
-  
-  .download {
-    width: 9.375rem;
-  }
-  
-  ::-webkit-input-placeholder {
-    color: #7f7f7f;
-    opacity: 1;
-  }
-  ::placeholder {
-    color: #7f7f7f;
-    opacity: 1;
-  }
-  
+
   .Header {
     align-items: center;
     box-sizing: border-box;
@@ -322,67 +193,79 @@ body {
     justify-content: space-between;
     width: 100%;
   }
-  .Header-menuButton {
-    background-color: transparent;
-    border: none;
-    box-sizing: content-box;
+  
+  .hamburger{
     cursor: pointer;
-    display: inline-block;
-    height: 1.313rem;
-    padding: 0.375rem;
+    width: 24px;
+    height: 24px;
+    transition:  all 0.25s;
     position: relative;
-    vertical-align: middle;
-    width: 1.313rem;
+    background: #fff;
+    border: none;
   }
-  .Header-menuButtonInner {
-    position: relative;
-  }
-  .Header-menuButton::after,
-  .Header-menuButtonInner,
-  .Header-menuButtonInner::before,
-  .Header-menuButtonInner::after {
-    background-color: #3e4042;
-    height: 0.1875rem;
-    transition: all 100ms ease-in;
-  }
-  .Header-menuButton::after {
-    opacity: 0;
-    top: 0.9375rem;
-  }
-  .Header-menuButton::after,
-  .Header-menuButtonInner::before,
-  .Header-menuButtonInner::after {
-    content: '';
-    display: block;
+  
+  .hamburgerTop,
+  .hamburgermiddle,
+  .hamburgerBottom{
     position: absolute;
-    width: 1.313rem;
+    top: 0;
+    left: 0;
+    width: 24px;
+    height: 2px;
+    background: #000;
+    transform: rotate(0);
+    transition: all 0.5s;
   }
-  .Header-menuButtonInner::before {
-    top: -0.375rem;
+  
+  .hamburgermiddle{
+    transform: translateY(7px);
   }
-  .Header-menuButtonInner::after {
-    bottom: -0.375rem;
+  
+  .hamburgerBottom {
+    transform: translateY(14px);
   }
-  .Header.is-active .Header-menuButton::after {
-    opacity: 1;
-    transform: rotate(-45deg);
+
+  .open{
+    transform: rotate(90deg);
+    transform: translateY(0px);
   }
-  .Header.is-active .Header-menuButton .Header-menuButtonInner {
-    transform: rotate(45deg);
+  
+  .open .hamburgerTop{
+    transform: rotate(45deg) translate(6px) translateY(6px);
   }
-  .Header.is-active .Header-menuButton .Header-menuButtonInner::before,
-  .Header.is-active .Header-menuButton .Header-menuButtonInner::after {
-    background-color: transparent;
+  
+  .open .hamburgermiddle{
+    display: none;
   }
+  
+  .open .hamburgerBottom{
+    transform: rotate(-45deg) translate(-6px) translateY(6px);
+  }
+
+  .openMenu{
+    display: block;
+  }
+
+
   .Header-menu {
     align-items: center;
-    display: none;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: block;
+  }
+
+  .menu {
+    align-items: center;
     flex-direction: column;
     list-style: none;
     margin: 0;
     padding: 0;
     width: 100%;
   }
+
   .Header.is-active .Header-menu {
     display: flex;
   }
@@ -414,55 +297,7 @@ body {
   .Header-menuItem--search {
     margin-top: 0.5rem;
   }
-  .HeaderSearch,
-  .HeaderSearch-label {
-    display: inline-block;
-    position: relative;
-  }
-  .HeaderSearch {
-    border: 0.0625rem solid #979797;
-    border-radius: 0.1875rem;
-    display: inline-flex;
-    overflow: hidden;
-    position: relative;
-  }
-  .HeaderSearch-input {
-    -webkit-appearance: none;
-    border: none;
-    border-radius: 0;
-    box-sizing: border-box;
-    display: block;
-    flex: 1;
-    font: inherit;
-    font-size: 16px; /* Prevents automatic zoom on mobile devices */
-    margin: 0;
-    padding: 0.5rem;
-  }
-  .HeaderSearch-input::-webkit-search-decoration {
-    -webkit-appearance: none;
-  }
-  .HeaderSearch-input::-moz-ui-invalid {
-    box-shadow: unset;
-  }
-  .HeaderSearch-submit {
-    background-color: #fff;
-    border: none;
-    box-sizing: border-box;
-    cursor: pointer;
-    margin: 0;
-    padding: 0.125rem 0.5rem 0 0.55rem;
-    transition: background-color 200ms;
-  }
-  .HeaderSearch:focus-within .HeaderSearch-submit {
-    background-color: #e5f6fb;
-  }
-  .HeaderSearch-icon {
-    fill: #757575;
-    transition: fill 200ms;
-  }
-  .HeaderSearch:focus-within .HeaderSearch-icon {
-    fill: #007d9c;
-  }
+
   @media only screen and (min-width: 56rem) {
     .Header {
       display: block;
@@ -488,13 +323,14 @@ body {
     .Header.is-active .Header-menu {
       display: block;
     }
-    .Header-menuButton {
+    .hamburger {
       display: none;
     }
     .Header-menu {
       display: flex;
       flex-direction: row;
       width: auto;
+
     }
     .Header-menuItem:first-of-type {
       margin-top: 0;
@@ -533,6 +369,9 @@ body {
     }
   }
   
+  .menu{
+    display: none;
+  }
 
   .Blog-title {
     display: block;
@@ -624,6 +463,7 @@ body {
       margin-top: 0;
     }
   }
+
   
   .toggleButton {
     cursor: pointer;
@@ -662,107 +502,6 @@ body {
   }
   h2 {
     clear: right;
-  }
-  
-  div.play {
-    padding: 0 1.25rem 2.5rem 1.25rem;
-  }
-  div.play pre,
-  div.play textarea,
-  div.play .lines {
-    padding: 0;
-    margin: 0;
-    font-family: Menlo, monospace;
-    font-size: 0.875rem;
-  }
-  div.play .input {
-    padding: 0.625rem;
-    margin-top: 0.625rem;
-  
-    border-top-left-radius: 0.3125rem;
-    border-top-right-radius: 0.3125rem;
-  
-    overflow: hidden;
-  }
-  div.play .input textarea {
-    width: 100%;
-    height: 100%;
-    border: none;
-    outline: none;
-    resize: none;
-  
-    overflow: hidden;
-  }
-  div#playground .input textarea {
-    overflow: auto;
-    resize: auto;
-  }
-  div.play .output {
-    border-top: none !important;
-  
-    padding: 0.625rem;
-    max-height: 12.5rem;
-    overflow: auto;
-  
-    border-bottom-right-radius: 0.3125rem;
-    border-bottom-left-radius: 0.3125rem;
-  }
-  div.play .output pre {
-    padding: 0;
-    border-radius: 0;
-  }
-  div.play .input,
-  div.play .input textarea,
-  div.play .output,
-  div.play .output pre {
-    background: #f7f9fa;
-    color: #202224;
-  }
-  div.play .input,
-  div.play .output {
-    border: 0.0625rem solid #c0c2c3;
-  }
-  div.play .buttons {
-    float: right;
-    padding: 0.625rem 0;
-    text-align: right;
-  }
-  div.play .buttons .Button {
-    margin-left: 0.3125rem;
-  }
-  .output .stderr {
-    color: #933;
-  }
-  .output .system {
-    color: #999;
-  }
-  
-  /* drop-down playground */
-  div#playground {
-    /* start hidden; revealed by javascript */
-    display: none;
-  }
-  div#playground {
-    position: absolute;
-    top: 3.938rem;
-    right: 1.25rem;
-    padding: 0 0.625rem 0.625rem 0.625rem;
-    z-index: 1;
-    text-align: left;
-    background: #e0ebf5;
-  
-    border: 0.0625rem solid #b0bbc5;
-    border-top: none;
-  
-    border-bottom-left-radius: 0.3125rem;
-    border-bottom-right-radius: 0.3125rem;
-  }
-  div#playground .code {
-    width: 32.5rem;
-    height: 12.5rem;
-  }
-  div#playground .output {
-    height: 6.25rem;
   }
   
   /* Inline runnable snippets (play.js/initPlayground) */
@@ -832,14 +571,7 @@ body {
     border-top-right-radius: 0.25rem;
     padding: 0.125rem 0.25rem 0.125rem 0.25rem; /* TRBL */
   }
-  
-  .downloading {
-    background: #f9f9be;
-    padding: 0.625rem;
-    text-align: center;
-    border-radius: 0.3125rem;
-  }
-  
+
   @media (max-width: 43.75em) {
     body {
       font-size: 0.9375rem;
@@ -849,7 +581,9 @@ body {
       left: 0;
       right: 0;
     }
-  
+    .Header-menu{
+      display: none;
+    }
     pre,
     code {
       font-size: 0.866rem;
@@ -876,16 +610,7 @@ body {
     }
   }
   
-  @media print {
-    pre {
-      background: #fff;
-      border: 0.0625rem solid #bbb;
-      white-space: pre-wrap;
-      page-break-inside: avoid;
-    }
-  }
-
-  code{
+   code{
       background: #efefef;
       padding: 0 5px;
   }
