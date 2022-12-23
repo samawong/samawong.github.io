@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hants</language>
     <copyright>© 2020-2022, All Rights Reserved</copyright>
-    <lastBuildDate>Mon, 14 Nov 2022 16:17:15 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 23 Dec 2022 19:18:15 +0800</lastBuildDate>
     
 	<atom:link href="https://guoqing.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Use Axios with Async/Await</title>
+      <link>https://guoqing.me/posts/use_axios_with_async_await/</link>
+      <pubDate>Fri, 23 Dec 2022 19:18:15 +0800</pubDate>
+      
+      <guid>https://guoqing.me/posts/use_axios_with_async_await/</guid>
+      <description>What is Axios?</description>
+    </item>
     
     <item>
       <title>Nextjs 13 使用不同样式文件</title>
